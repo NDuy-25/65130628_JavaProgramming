@@ -5,18 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Nhập nội dung công việc -->
     <EditText
         android:id="@+id/editTextTask"
         android:hint="Nhập việc cần làm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <!-- Nút chọn giờ -->
+    <Button
+        android:id="@+id/buttonPickTime"
+        android:text="Chọn giờ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- Nút thêm công việc -->
     <Button
         android:id="@+id/buttonAdd"
         android:text="Thêm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <!-- Danh sách công việc -->
     <ListView
         android:id="@+id/listViewTasks"
         android:layout_width="match_parent"
