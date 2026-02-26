@@ -33,4 +33,11 @@
         android:text="Xóa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <!-- CheckBox Hoàn thành -->
+    <CheckBox
+        android:id="@+id/checkDone"
+        android:text="Hoàn thành"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
