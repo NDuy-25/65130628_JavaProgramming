@@ -2,12 +2,14 @@ package com.duy.mobileapp;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,16 +31,33 @@ public class TaskAdapter extends ArrayAdapter<Task> {
         TextView textView = convertView.findViewById(R.id.taskText);
         TextView timeView = convertView.findViewById(R.id.taskTime);
         Button deleteBtn = convertView.findViewById(R.id.buttonDelete);
+        CheckBox checkDone = convertView.findViewById(R.id.checkDone);
 
         textView.setText(task.text);
         timeView.setText(task.time);
 
-        // Màu nền xen kẽ
-        convertView.setBackgroundColor(position % 2 == 0
-                ? Color.parseColor("#E3F2FD") // xanh nhạt
-                : Color.parseColor("#FFF9C4")); // vàng nhạt
+        // Reset listener trước khi setChecked
+        checkDone.setOnCheckedChangeListener(null);
+        checkDone.setChecked(task.done);
 
-        // Xử lý nút Xóa
+        // Hiển thị trạng thái
+        if (task.done) {
+            textView.setTextColor(Color.GRAY);
+            textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        } else {
+            textView.setTextColor(Color.BLACK);
+            textView.setPaintFlags(textView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+        }
+
+        // Listener sau khi setChecked
+        checkDone.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (task.id != null) {
+                FirebaseDatabase.getInstance().getReference("tasks")
+                        .child(task.id).child("done").setValue(isChecked);
+            }
+        });
+
+        // Nút Xóa
         deleteBtn.setOnClickListener(v -> {
             if (task.id != null) {
                 FirebaseDatabase.getInstance().getReference("tasks")
