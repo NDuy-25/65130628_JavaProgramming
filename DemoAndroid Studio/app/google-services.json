@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "47393034608",
+    "project_id": "mobileapp-35259",
+    "storage_bucket": "mobileapp-35259.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47393034608:android:03688bf38bcc6d3f53ffb5",
+        "android_client_info": {
+          "package_name": "com.duy.mobileapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACCA4Wu1xCrNT4DIOuQEhzxp-tOn9jKGU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
